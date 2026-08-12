@@ -39,18 +39,11 @@ video-audio-transcribe
 
 ## 安装
 
-把仓库上传到 GitHub 后，可以让 Codex 从两个路径安装：
+可以让 Codex 直接从以下两个地址安装：
 
 ```text
-skills/video-audio-transcribe
-skills/social-content-monitor-to-lark
-```
-
-例如，把下面地址中的 `<owner>` 和 `<repo>` 换成实际仓库：
-
-```text
-https://github.com/<owner>/<repo>/tree/main/skills/video-audio-transcribe
-https://github.com/<owner>/<repo>/tree/main/skills/social-content-monitor-to-lark
+https://github.com/wulitou-shubing/social-content-monitor-skills/tree/main/skills/video-audio-transcribe
+https://github.com/wulitou-shubing/social-content-monitor-skills/tree/main/skills/social-content-monitor-to-lark
 ```
 
 两个 Skill 应同时安装。监控 Skill 还需要：

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Video & Audio Transcribe"
+  short_description: "下载在线视频或本地媒体，并生成带时间戳的高质量语音文字稿"
+  default_prompt: "Use $video-audio-transcribe to download this media when needed and transcribe its speech."

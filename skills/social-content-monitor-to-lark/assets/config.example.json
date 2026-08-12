@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "timezone": "Asia/Shanghai",
+  "schedule": [
+    "08:00",
+    "16:30"
+  ],
+  "schedule_window_minutes": 10,
+  "max_candidates_per_account": 5,
+  "state_file": "outputs/social_monitor/state.json",
+  "platforms": [
+    {
+      "platform": "douyin",
+      "accounts": [
+        {
+          "enabled": false,
+          "name": "Replace with creator name",
+          "profile_url": "https://www.douyin.com/user/replace-with-sec-user-id",
+          "stable_account_id": "replace-with-sec-user-id"
+        }
+      ]
+    },
+    {
+      "platform": "xiaohongshu",
+      "accounts": [
+        {
+          "enabled": false,
+          "name": "Replace with creator name",
+          "profile_url": "https://www.xiaohongshu.com/user/profile/replace-with-user-id",
+          "stable_account_id": "replace-with-user-id"
+        }
+      ]
+    }
+  ],
+  "lark": {
+    "base_url": "https://example.feishu.cn/base/replace-with-your-base-link",
+    "table_name": "Content collection",
+    "field_map": {
+      "unique_key": "唯一键",
+      "platform": "平台",
+      "content_id": "内容ID",
+      "content_kind": "内容类型",
+      "title": "标题",
+      "published_at": "发布日期",
+      "canonical_url": "链接",
+      "author_name": "作者",
+      "author_stable_id": "作者ID",
+      "likes": "点赞",
+      "comments": "评论",
+      "favorites": "收藏",
+      "shares": "分享",
+      "views": "播放",
+      "caption": "原始文案",
+      "tags": "标签",
+      "transcript": "口播文案",
+      "transcription_status": "转写状态",
+      "error_message": "失败原因",
+      "discovered_at": "发现时间"
+    }
+  },
+  "download": {
+    "cookies_from_browser": null
+  },
+  "transcription": {
+    "enabled": true,
+    "model": "small",
+    "language": "auto",
+    "output_root": "outputs/social_monitor"
+  },
+  "notifications": {
+    "on_new_content": true,
+    "on_no_change": false,
+    "on_failure": true
+  }
+}

@@ -1,0 +1,17 @@
+.DS_Store
+.env
+.venv/
+__pycache__/
+*.py[cod]
+*.cookies.txt
+cookies.txt
+monitor.config.json
+config.json
+outputs/
+*.mp3
+*.mp4
+*.mov
+*.mkv
+*.wav
+*.srt
+*_transcript.txt

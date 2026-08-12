@@ -1,0 +1,51 @@
+name: Bug report
+description: Report a reproducible installation or runtime problem
+title: "[Bug] "
+labels:
+  - bug
+body:
+  - type: checkboxes
+    attributes:
+      label: Safety check
+      options:
+        - label: I removed cookies, tokens, private URLs, personal information, local paths, and copyrighted media from this report.
+          required: true
+        - label: I searched existing Issues for the same problem.
+          required: true
+  - type: dropdown
+    attributes:
+      label: Affected Skill
+      options:
+        - video-audio-transcribe
+        - social-content-monitor-to-lark
+        - both
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Agent client and version
+      placeholder: Codex, Claude Code, Cursor, or another client
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Environment
+      placeholder: Operating system, Python version, ffmpeg version, and relevant integration
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Steps to reproduce
+      description: Use placeholders for private or copyrighted inputs.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Expected result
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Actual result and safe logs
+    validations:
+      required: true

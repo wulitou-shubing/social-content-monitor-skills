@@ -1,0 +1,33 @@
+name: Feature request
+description: Suggest a platform, integration, or workflow improvement
+title: "[Feature] "
+labels:
+  - enhancement
+body:
+  - type: checkboxes
+    attributes:
+      label: Before submitting
+      options:
+        - label: I searched existing Issues for a similar request.
+          required: true
+        - label: This request does not depend on bypassing platform access controls.
+          required: true
+  - type: textarea
+    attributes:
+      label: Problem to solve
+      description: Describe the task and who would benefit from it.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Proposed behavior
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Platform or Agent client details
+      description: Include public documentation links when possible.
+  - type: textarea
+    attributes:
+      label: Safety and permissions
+      description: Explain required authentication, files, network access, external writes, and scheduling.

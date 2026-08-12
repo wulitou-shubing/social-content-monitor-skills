@@ -1,7 +1,14 @@
 # 📡 Social Content Monitor Skills
 
+[中文](README.md) · [English](README.en.md)
+
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-open%20format-5B5BD6.svg)](https://agentskills.io)
 [![License MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![GitHub Release](https://img.shields.io/github/v/release/wulitou-shubing/social-content-monitor-skills)](https://github.com/wulitou-shubing/social-content-monitor-skills/releases)
+[![skills.sh](https://skills.sh/b/wulitou-shubing/social-content-monitor-skills)](https://skills.sh/wulitou-shubing/social-content-monitor-skills)
+[![Validate](https://github.com/wulitou-shubing/social-content-monitor-skills/actions/workflows/validate.yml/badge.svg)](https://github.com/wulitou-shubing/social-content-monitor-skills/actions/workflows/validate.yml)
+
+![Social Content Monitor 从发现新作品到写入结构化数据](assets/social-preview.jpg)
 
 #### 盯住创作者的新作品，提取视频口播，再把结果送进飞书
 
@@ -12,6 +19,29 @@
 仓库遵循 [Agent Skills 开放格式](https://agentskills.io)。Claude Code、Codex 以及其他兼容 `SKILL.md` 的 Agent 都可以加载。不同客户端提供的浏览器、飞书连接器和定时任务能力并不相同，完整监控需要这些能力配合。
 
 > 第一次安装建议看 [从安装到首次运行](docs/getting-started.md)。里面写了原生安装、手动安装和不支持 Skill 时的用法。
+
+## ⚡ 一条命令安装
+
+已经通过 skills.sh CLI 实际验证。下面这条命令会识别并安装仓库里的两个 Skill。
+
+```bash
+npx skills add wulitou-shubing/social-content-monitor-skills
+```
+
+也可以只安装其中一个。
+
+```bash
+npx skills add wulitou-shubing/social-content-monitor-skills --skill video-audio-transcribe
+npx skills add wulitou-shubing/social-content-monitor-skills --skill social-content-monitor-to-lark
+```
+
+安装后可以先用一句话测试。
+
+```text
+提取这个视频的口播文案，保留时间戳文字稿，并生成 SRT 字幕。
+```
+
+想先看看飞书里会留下什么，可以打开 [脱敏演示](docs/demo.md)。演示使用虚构数据，不包含真实账号和私人链接。
 
 ## 📋 这里有两个 Skill
 
@@ -34,6 +64,12 @@ flowchart LR
 ## 📦 安装
 
 ### 支持 Agent Skills 的客户端
+
+推荐直接使用已经验证过的 skills.sh CLI。
+
+```bash
+npx skills add wulitou-shubing/social-content-monitor-skills
+```
 
 在 Claude Code、Codex 或其他支持 Agent Skills 的工具里，直接发送下面这段话。
 
@@ -174,9 +210,20 @@ Agent Skills 是开放格式，Skill 能被加载，不代表每个客户端都�
 ```text
 social-content-monitor-skills/
 ├── README.md
+├── README.en.md
 ├── LICENSE
+├── SECURITY.md
+├── CONTRIBUTING.md
+├── assets/
+│   └── social-preview.jpg
 ├── docs/
-│   └── getting-started.md
+│   ├── getting-started.md
+│   ├── demo.md
+│   └── demo.en.md
+├── promotion/
+│   ├── launch-article.md
+│   ├── social-posts.md
+│   └── launch-checklist.md
 └── skills/
     ├── video-audio-transcribe/
     │   ├── SKILL.md
@@ -196,6 +243,6 @@ social-content-monitor-skills/
 
 ## 🌟 反馈与许可
 
-有问题或想增加新的平台，可以在 [Issues](https://github.com/wulitou-shubing/social-content-monitor-skills/issues) 中提出。使用顺利的话，也欢迎点一个 Star。
+有问题或想增加新的平台，可以提交 [Issue](https://github.com/wulitou-shubing/social-content-monitor-skills/issues) 或参加 [Discussions](https://github.com/wulitou-shubing/social-content-monitor-skills/discussions)。提交前请阅读 [支持说明](SUPPORT.md)、[贡献指南](CONTRIBUTING.md) 和 [安全政策](SECURITY.md)。使用顺利的话，也欢迎点一个 Star。
 
 本仓库使用 [MIT License](LICENSE)。平台内容不会因为这份开源许可证而改变版权或使用条件。

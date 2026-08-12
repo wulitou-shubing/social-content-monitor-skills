@@ -42,7 +42,20 @@
 
 ## 第一步 安装两个 Skill
 
-如果客户端支持从链接安装 Agent Skill，把下面这段话发给它。
+推荐先使用已经实际验证过的 skills.sh CLI。它会发现仓库里的两个 Skill，并让你选择安装目标。
+
+```bash
+npx skills add wulitou-shubing/social-content-monitor-skills
+```
+
+只安装一个 Skill 时可以直接指定名字。
+
+```bash
+npx skills add wulitou-shubing/social-content-monitor-skills --skill video-audio-transcribe
+npx skills add wulitou-shubing/social-content-monitor-skills --skill social-content-monitor-to-lark
+```
+
+如果客户端支持从链接安装 Agent Skill，也可以把下面这段话发给它。
 
 ```text
 请从下面两个 GitHub 地址安装 Skill，并在安装后检查它们是否能够被识别。

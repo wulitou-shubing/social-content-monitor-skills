@@ -5,7 +5,7 @@ Create or update a recurring automation only when the user explicitly requests i
 ## Scheduling rules
 
 1. Store the user's IANA timezone, for example `Asia/Shanghai`.
-2. Use the product automation tool rather than hand-written cron or raw scheduler directives.
+2. Prefer the current agent client's native scheduler or automation tool. Use system cron only when the user explicitly chooses it and understands where its logs and credentials are stored.
 3. Put the timezone and intended local times into the automation request.
 4. Add a runtime hard gate: compute current time in the configured timezone and exit before browsing when it is outside an approved window.
 5. Keep one automation for one monitoring configuration so checkpoints and deduplication remain consistent.

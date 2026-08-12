@@ -37,13 +37,13 @@ Use `field_map` in the working config to map logical keys to the user's actual f
 
 ## Schema resolution
 
-1. Resolve a Base or Wiki URL through `lark-base` and reuse the returned real `base_token` and table ID.
+1. Resolve a Base or Wiki URL through an authorized Lark connector, the official OpenAPI, or `lark-cli`, and reuse the returned real `base_token` and table ID.
 2. Read the table and field list before writing.
 3. Confirm writable field types and existing select options.
 4. Do not write formula, lookup, system, or attachment fields as ordinary values.
 5. If required fields are missing, ask before creating or changing schema.
 
-Use user identity by default. Route authentication and missing-scope recovery through `lark-shared`; do not silently switch identities.
+Use user identity by default. Route authentication and missing-scope recovery through the current client's authorized Lark integration. In Codex environments that provide it, use `lark-shared`. Do not silently switch identities.
 
 ## Deduplication
 

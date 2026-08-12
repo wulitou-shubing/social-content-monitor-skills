@@ -1,36 +1,48 @@
 # 从安装到首次运行
 
-这份教程写给第一次接触 Codex Skill 的使用者。完成后，你会得到两项能力。
+这份教程写给第一次接触 Agent Skill 的使用者。完成后，你会得到两项能力。
 
 - 把单个视频链接、本地视频或录音转成文字稿和 SRT 字幕
 - 监控指定平台账号，把新作品和口播文案保存到飞书多维表格
 
 建议先跑通单个视频转写，再配置账号监控。这样遇到问题时，很容易判断是转写环境、平台登录还是飞书配置出了问题。
 
+## 先判断你的 Agent 能做到哪一步
+
+这两个 Skill 使用 [Agent Skills 开放格式](https://agentskills.io)。Claude Code、Codex 和其他兼容 `SKILL.md` 的 Agent 可以读取，但每个客户端能调用的工具不同。
+
+单个视频转写需要 Agent 能读取本地文件并运行 Python。处理在线视频时还要能够访问网络和运行 `ffmpeg`。
+
+完整账号监控需要更多能力。Agent 要能访问已经正常登录的平台页面或官方 API，还要能调用飞书连接器、官方 OpenAPI 或 `lark-cli`。自动监控另外需要客户端提供定时任务功能。
+
+缺少某一项时不必放弃整个仓库。没有飞书工具仍可使用单个视频转写，没有定时任务仍可手动运行监控。
+
 ## 开始前先准备
 
 你需要准备以下内容。
 
-- 已安装并能正常使用的 Codex
+- 一个能够读取 `SKILL.md`、本地文件并运行命令的 Agent
 - Python 3.10 或更高版本
 - `ffmpeg`
 - 一个你有权访问的视频链接或本地媒体文件
 - 一个飞书多维表格
 - 正常可用的平台和飞书登录会话
 
-监控功能还需要飞书官方 `lark-cli`、`lark-shared` Skill、`lark-base` Skill，以及可以访问目标平台的浏览器控制能力、官方 API 或已授权连接器。
+监控功能还需要飞书官方 `lark-cli`、飞书连接器或官方 OpenAPI，以及可以访问目标平台的浏览器控制能力、官方 API 或已授权连接器。在 Codex 中可以使用 `lark-shared` 和 `lark-base`。
 
-你不需要一开始就把所有依赖弄明白。可以把下面这段话交给 Codex，让它先检查环境。涉及安装软件、下载模型或使用浏览器登录状态时，Codex 应当先征得你的同意。
+你不需要一开始就把所有依赖弄明白。可以把下面这段话交给 Agent，让它先检查环境。涉及安装软件、下载模型或使用浏览器登录状态时，Agent 应当先征得你的同意。
 
 ```text
-我要使用 social-content-monitor-skills。请检查这台电脑是否已经具备 Python 3.10、ffmpeg、飞书 lark-cli、lark-shared、lark-base 和视频转写所需的 Python 依赖。
+我要使用 social-content-monitor-skills。请检查这台电脑是否已经具备 Python 3.10、ffmpeg、可用的飞书连接方式和视频转写所需的 Python 依赖。
+
+如果当前环境是 Codex，再检查 lark-shared 和 lark-base。如果是其他 Agent，请告诉我它能使用哪种飞书连接器、MCP、官方 OpenAPI 或 lark-cli。
 
 只做检查，不要直接安装。请用小白能看懂的方式告诉我缺什么，以及每一项是做什么的。
 ```
 
 ## 第一步 安装两个 Skill
 
-把下面这段话发给 Codex。
+如果客户端支持从链接安装 Agent Skill，把下面这段话发给它。
 
 ```text
 请从下面两个 GitHub 地址安装 Skill，并在安装后检查它们是否能够被识别。
@@ -46,9 +58,13 @@ https://github.com/wulitou-shubing/social-content-monitor-skills/tree/main/skill
 
 如果只想做视频转文字，安装 `video-audio-transcribe` 就够了。
 
+如果客户端不能从链接安装，可以在仓库页面点击 `Code` 和 `Download ZIP` 下载整个仓库。解压后，把需要的完整 Skill 文件夹放进该客户端规定的 Skills 目录。不要只复制 `SKILL.md`，同目录里的脚本、参考文件和示例配置也是 Skill 的一部分。
+
+如果客户端没有原生 Skill 功能，把完整文件夹放进当前项目，再让 Agent 阅读对应的 `SKILL.md`。这种方式仍然要求 Agent 能读取相对路径并运行脚本。
+
 ## 第二步 测试单个视频转写
 
-先找一个你有权下载和转写的视频链接，然后把下面这段话发给 Codex。
+先找一个你有权下载和转写的视频链接，然后把下面这段话发给 Agent。
 
 ```text
 请使用 video-audio-transcribe 处理下面的视频。
@@ -104,15 +120,17 @@ https://github.com/wulitou-shubing/social-content-monitor-skills/tree/main/skill
 
 ## 第四步 登录并检查飞书权限
 
-把下面这段话发给 Codex。
+把下面这段话发给 Agent。
 
 ```text
-请检查我的飞书 lark-cli 登录状态和 lark-base 权限。然后读取下面这个多维表格的真实数据表和字段结构，只做检查，不要创建、修改或删除记录。
+请检查当前可用的飞书连接器、官方 OpenAPI 或 lark-cli 登录状态和多维表格权限。然后读取下面这个多维表格的真实数据表和字段结构，只做检查，不要创建、修改或删除记录。
+
+如果当前环境是 Codex，可以优先使用 lark-shared 和 lark-base。
 
 这里换成飞书多维表格链接
 ```
 
-检查结果中应当能看到你的数据表名称和字段。若提示没有权限，先按 Codex 给出的授权步骤完成登录，再重新检查。
+检查结果中应当能看到你的数据表名称和字段。若提示没有权限，先按 Agent 给出的授权步骤完成登录，再重新检查。
 
 ## 第五步 创建监控配置
 
@@ -120,7 +138,7 @@ https://github.com/wulitou-shubing/social-content-monitor-skills/tree/main/skill
 
 真实配置应当放在 Skill 文件夹和 Git 仓库之外。这样以后更新 Skill 或把仓库公开到 GitHub 时，不容易误上传私人账号、飞书链接和本地路径。
 
-你可以让 Codex 帮你生成配置。
+你可以让 Agent 帮你生成配置。
 
 ```text
 请根据 social-content-monitor-to-lark 的示例配置，帮我在 Skill 文件夹和 Git 仓库之外创建一份真实监控配置。
@@ -145,7 +163,7 @@ https://github.com/wulitou-shubing/social-content-monitor-skills/tree/main/skill
 
 ## 第六步 校验配置
 
-配置创建完成后，让 Codex 运行仓库自带的校验工具。
+配置创建完成后，让 Agent 运行仓库自带的校验工具。
 
 ```text
 请使用 social-content-monitor-to-lark 自带的 validate_config.py 校验我的监控配置。只做校验，不要开始监控。发现问题时请告诉我具体字段和修改方法。
@@ -199,17 +217,17 @@ https://github.com/wulitou-shubing/social-content-monitor-skills/tree/main/skill
 没有新内容时不用通知我。出现验证码、登录失效、字段不匹配、下载失败、转写失败或飞书写入失败时必须通知我。不要自动点赞、关注、评论、私信或发布内容。
 ```
 
-创建完成后，要求 Codex 告诉你任务名称、运行时间、使用的时区和出错时的通知方式。
+创建完成后，要求 Agent 告诉你任务名称、运行时间、使用的时区和出错时的通知方式。若当前客户端没有定时任务功能，保留手动运行，不要假装已经自动化。
 
 ## 常见问题
 
 ### 安装后找不到 Skill
 
-先确认安装地址指向具体的 Skill 文件夹，不是只给了仓库首页。然后让 Codex 列出当前可用 Skills，必要时重新加载工作区或重新开始一个任务。
+先确认安装地址指向具体的 Skill 文件夹，不是只给了仓库首页。然后让 Agent 列出当前可用 Skills，必要时重新加载项目或重新开始一个任务。
 
 ### 提示没有 ffmpeg
 
-`ffmpeg` 负责读取视频和处理音频。请让 Codex 说明当前系统适合哪种安装方式，并在你确认后再安装。
+`ffmpeg` 负责读取视频和处理音频。请让 Agent 说明当前系统适合哪种安装方式，并在你确认后再安装。
 
 ### 第一次转写很慢
 
@@ -221,7 +239,7 @@ https://github.com/wulitou-shubing/social-content-monitor-skills/tree/main/skill
 
 ### 飞书提示字段不匹配
 
-先让 Codex 重新读取真实数据表和字段结构，再调整配置里的 `field_map`。不要只凭浏览器地址栏中的一段字符猜 Base token 或数据表 ID。
+先让 Agent 重新读取真实数据表和字段结构，再调整配置里的 `field_map`。不要只凭浏览器地址栏中的一段字符猜 Base token 或数据表 ID。
 
 ### 飞书里出现重复作品
 
@@ -237,7 +255,7 @@ Whisper 的结果是听写草稿。保留带时间戳的原始稿，根据视频
 
 ## 更新 Skill
 
-仓库更新后，可以把两个安装地址再次发给 Codex，并明确要求从 GitHub 获取最新版、检查变更和重新验证。更新前应保留仓库外的真实配置和运行状态，不要用示例配置覆盖它们。
+仓库更新后，可以把两个安装地址再次发给 Agent，并明确要求从 GitHub 获取最新版、检查变更和重新验证。更新前应保留仓库外的真实配置和运行状态，不要用示例配置覆盖它们。
 
 ```text
 请从下面两个地址检查并更新已经安装的 Skill。更新前不要删除我的真实配置和运行状态。更新后请告诉我改了什么，并重新检查两个 Skill 是否可用。

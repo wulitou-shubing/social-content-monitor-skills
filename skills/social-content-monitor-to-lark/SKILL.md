@@ -9,10 +9,10 @@ Orchestrate platform reading, durable deduplication, media transcription, and La
 
 ## Required capabilities
 
-- Use the available browser-control skill for signed-in, visible social pages. Prefer a platform connector or official API when one is available and authorized.
-- Use `lark-shared` for Lark authentication and `lark-base` for Base schema and record operations.
+- Use the current agent client's browser automation for signed-in, visible social pages. Prefer an authorized platform connector or official API when one is available.
+- Use an authorized Lark connector, the official Lark OpenAPI, or `lark-cli` for Base authentication, schema inspection, and record operations. In Codex environments that provide them, prefer `lark-shared` and `lark-base`.
 - Use the companion `video-audio-transcribe` skill only for confirmed new video/audio content.
-- Use the product's automation capability only when the user explicitly requests recurring monitoring.
+- Use the current agent client's scheduler or automation capability only when the user explicitly requests recurring monitoring.
 
 Read these references before the relevant stage:
 
@@ -25,7 +25,7 @@ Read these references before the relevant stage:
 
 1. Copy `assets/config.example.json` outside the skill folder and replace placeholders.
 2. Run `python scripts/validate_config.py <CONFIG>`.
-3. Resolve the user's Lark Base URL with `lark-base`; never treat a Wiki token or URL fragment as a Base token.
+3. Resolve the user's Lark Base URL with an authorized Lark tool; never treat a Wiki token or URL fragment as a Base token.
 4. Read the real table and field schema, then confirm or adjust `field_map`.
 5. For each account, establish a baseline. By default, record the latest verified non-pinned content ID without importing history. Import history only when the user explicitly requests it.
 

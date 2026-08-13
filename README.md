@@ -61,17 +61,9 @@ flowchart LR
     E --> F[回填同一条飞书记录]
 ```
 
-## 📦 安装
+## 📦 其他安装方式
 
-### 支持 Agent Skills 的客户端
-
-推荐直接使用已经验证过的 skills.sh CLI。
-
-```bash
-npx skills add wulitou-shubing/social-content-monitor-skills
-```
-
-在 Claude Code、Codex 或其他支持 Agent Skills 的工具里，直接发送下面这段话。
+在 Claude Code、Codex 或其他支持从链接安装 Agent Skills 的工具里，可以直接发送下面这段话。
 
 ```text
 请帮我安装下面两个 Agent Skill，并在安装后检查是否能够识别。
@@ -212,18 +204,18 @@ social-content-monitor-skills/
 ├── README.md
 ├── README.en.md
 ├── LICENSE
-├── SECURITY.md
-├── CONTRIBUTING.md
+├── .github/
+│   ├── SECURITY.md
+│   ├── CONTRIBUTING.md
+│   ├── CODE_OF_CONDUCT.md
+│   ├── ISSUE_TEMPLATE/
+│   └── workflows/
 ├── assets/
 │   └── social-preview.jpg
 ├── docs/
 │   ├── getting-started.md
 │   ├── demo.md
 │   └── demo.en.md
-├── promotion/
-│   ├── launch-article.md
-│   ├── social-posts.md
-│   └── launch-checklist.md
 └── skills/
     ├── video-audio-transcribe/
     │   ├── SKILL.md
@@ -243,6 +235,6 @@ social-content-monitor-skills/
 
 ## 🌟 反馈与许可
 
-有问题或想增加新的平台，可以提交 [Issue](https://github.com/wulitou-shubing/social-content-monitor-skills/issues) 或参加 [Discussions](https://github.com/wulitou-shubing/social-content-monitor-skills/discussions)。提交前请阅读 [支持说明](SUPPORT.md)、[贡献指南](CONTRIBUTING.md) 和 [安全政策](SECURITY.md)。使用顺利的话，也欢迎点一个 Star。
+有问题或想增加新的平台，可以提交 [Issue](https://github.com/wulitou-shubing/social-content-monitor-skills/issues) 或参加 [Discussions](https://github.com/wulitou-shubing/social-content-monitor-skills/discussions)。提交前请阅读 [贡献指南](.github/CONTRIBUTING.md) 和 [安全政策](.github/SECURITY.md)。使用顺利的话，也欢迎点一个 Star。
 
 本仓库使用 [MIT License](LICENSE)。平台内容不会因为这份开源许可证而改变版权或使用条件。

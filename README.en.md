@@ -142,6 +142,6 @@ Whisper output is a draft transcript. Review names, brands, figures, and special
 
 Use [Issues](https://github.com/wulitou-shubing/social-content-monitor-skills/issues) for reproducible bugs and feature requests. Use [Discussions](https://github.com/wulitou-shubing/social-content-monitor-skills/discussions) for usage questions and platform ideas.
 
-Read [Support](SUPPORT.md), [Contributing](CONTRIBUTING.md), and the [Security Policy](SECURITY.md) before posting. If the project helps you, a Star makes it easier for other Agent users to find it.
+Read [Contributing](.github/CONTRIBUTING.md) and the [Security Policy](.github/SECURITY.md) before posting. If the project helps you, a Star makes it easier for other Agent users to find it.
 
 This repository is available under the [MIT License](LICENSE). The license does not change the copyright or usage conditions of platform content.
